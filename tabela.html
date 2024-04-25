@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Livros Resgatados</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #7afdd6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #7afdd6;
+        }
+        th, td {
+            border: 1px solid #7afdd6;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consulta de Livros Resgatados</h1>
+
+    <table id="tabelaLivros">
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Estado</th>
+            <th>Nome do Doador</th>
+            <th>Contato do Doador</th>
+        </tr>
+    </table>
+
+    <script>
+        // Busca os dados no localStorage
+        const titulo = localStorage.getItem('titulo');
+        const autor = localStorage.getItem('autor');
+        const genero = localStorage.getItem('genero');
+        const estado = localStorage.getItem('estado');
+        const nomeDoador = localStorage.getItem('nomeDoador');
+        const contatoDoador = localStorage.getItem('contatoDoador');
+
+        // Cria uma nova linha na tabela para cada livro
+        const tabelaLivros = document.getElementById('tabelaLivros');
+        const novaLinha = tabelaLivros.insertRow(-1);
+
+        novaLinha.insertCell(0).innerHTML = titulo;
+        novaLinha.insertCell(1).innerHTML = autor;
+        novaLinha.insertCell(2).innerHTML = genero;
+        novaLinha.insertCell(3).innerHTML = estado;
+        novaLinha.insertCell(4).innerHTML = nomeDoador;
+        novaLinha.insertCell(5).innerHTML = contatoDoador;
+    </script>
+</body>
+</html>
