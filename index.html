@@ -1,51 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Login Cyberpunk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros Resgatados</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
         body {
             font-family: 'Orbitron', sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
         }
-        .login-container {
-            width: 300px;
-            padding: 16px;
-            background-color: #0f0c29;
-            background-image: linear-gradient(315deg, #0f0c29 0%, #24243e 74%);
-            color: #7afdd6;
-            margin: 0 auto;
-            margin-top: 100px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px 0px #000;
-        }
-        .login-container h1 {
+        h1 {
             text-align: center;
-            margin-bottom: 24px;
-        }
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 91%;
-            padding: 12px;
             margin-bottom: 20px;
-            border-radius: 4px;
+            color: #7afdd6;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #7afdd6;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
             border: 1px solid #7afdd6;
             background: transparent;
             color: #7afdd6;
+            margin-bottom: 15px;
         }
-        .login-container input[type="submit"] {
-            width: 100%;
+        button {
             background-color: #7afdd6;
             color: #0f0c29;
-            padding: 14px 20px;
-            margin: 8px 0;
+            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
-        .login-container input[type="submit"]:hover {
+        button:hover {
             background-color: #0f0c29;
             color: #7afdd6;
             border: 1px solid #7afdd6;
@@ -53,11 +45,77 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <input type="text" placeholder="Nome de usuário" name="username" required>
-        <input type="password" placeholder="Senha" name="psw" required>
-        <input type="submit" value="Entrar">
-    </div>
+    <h1>Cadastro de Livros Resgatados</h1>
+
+    <form id="formulario">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br><br>
+
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor" required><br><br>
+
+        <label for="genero">Gênero:</label>
+        <select id="genero" name="genero" required>
+            <option value="">Selecione</option>
+            <option value="aventura">Aventura</option>
+            <option value="romance">Romance</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="ficcaoCientifica">Ficção Científica</option>
+            <option value="outro">Outro</option>
+        </select><br><br>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="">Selecione</option>
+            <option value="novo">Novo</option>
+            <option value="usadoBomEstado">Usado - Bom Estado</option>
+            <option value="usadoRegular">Usado - Regular</option>
+            <option value="danificado">Danificado</option>
+        </select><br><br>
+
+        <label for="nomeDoador">Nome do Doador:</label>
+        <input type="text" id="nomeDoador" name="nomeDoador"><br><br>
+
+        <label for="contatoDoador">Contato do Doador:</label>
+        <input type="text" id="contatoDoador" name="contatoDoador"><br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        const formulario = document.getElementById('formulario');
+
+        formulario.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            const titulo = document.getElementById('titulo').value;
+            const autor = document.getElementById('autor').value;
+            const genero = document.getElementById('genero').value;
+            const estado = document.getElementById('estado').value;
+            const nomeDoador = document.getElementById('nomeDoador').value;
+            const contatoDoador = document.getElementById('contatoDoador').value;
+
+            // Validação opcional (evita envio de dados incompletos)
+            if (titulo === '' || autor === '' || genero === '' || estado === '') {
+                alert('Preencha todos os campos obrigatórios!');
+                return; // Interrompe a execução do código caso a validação falhe
+            }
+
+            // Exibir dados no console para fins de demonstração
+            console.log('Livro cadastrado:');
+            console.log('Título:', titulo);
+            console.log('Autor:', autor);
+            console.log('Gênero:', genero);
+            console.log('Estado:', estado);
+            console.log('Nome do Doador:', nomeDoador);
+            console.log('Contato do Doador:', contatoDoador);
+
+            // Implemente aqui a lógica para salvar os dados do formulário
+            // Exemplos: salvar em banco de dados local, enviar para um servidor, etc.
+            // ...
+
+            alert('Livro cadastrado com sucesso!');
+        });
+    </script>
 </body>
 </html>
