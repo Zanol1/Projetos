@@ -4,7 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Livros Resgatados</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #7afdd6;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #7afdd6;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #7afdd6;
+            background: transparent;
+            color: #7afdd6;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #7afdd6;
+            color: #0f0c29;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0f0c29;
+            color: #7afdd6;
+            border: 1px solid #7afdd6;
+        }
+    </style>
 </head>
 <body>
     <h1>Cadastro de Livros Resgatados</h1>
@@ -44,6 +82,36 @@
         <button type="submit">Cadastrar</button>
     </form>
 
-    <script src="script.js"></script>
+    <script>
+        const formulario = document.getElementById('formulario');
+
+formulario.addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    const titulo = document.getElementById('titulo').value;
+    const autor = document.getElementById('autor').value;
+    const genero = document.getElementById('genero').value;
+    const estado = document.getElementById('estado').value;
+    const nomeDoador = document.getElementById('nomeDoador').value;
+    const contatoDoador = document.getElementById('contatoDoador').value;
+
+    // Validação opcional (evita envio de dados incompletos)
+    if (titulo === '' || autor === '' || genero === '' || estado === '') {
+        alert('Preencha todos os campos obrigatórios!');
+        return; // Interrompe a execução do código caso a validação falhe
+    }
+
+    // Armazena cada campo individualmente no localStorage
+    localStorage.setItem('titulo', titulo);
+    localStorage.setItem('autor', autor);
+    localStorage.setItem('genero', genero);
+    localStorage.setItem('estado', estado);
+    localStorage.setItem('nomeDoador', nomeDoador);
+    localStorage.setItem('contatoDoador', contatoDoador);
+
+    alert('Livro cadastrado com sucesso!');
+});
+
+    </script>
 </body>
 </html>
